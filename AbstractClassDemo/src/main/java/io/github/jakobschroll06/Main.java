@@ -1,17 +1,32 @@
 package io.github.jakobschroll06;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import io.github.jakobschroll06.DNV_Info.passenger.Ford.FordModel;
+import io.github.jakobschroll06.DNV_Info.passenger.Ford.Models;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+
+
+public class Main {
+
+    public static void simpleExample(int param) throws OhNo{
+        // This has to be positive
+        if (param < 0 ){
+           //throw new IllegalArgumentException("Parameter has to be positive");
+            throw new OhNo("Paramter cannot be negative" + param);
+        }
+        System.out.println("Everything worked fine");
+    }
+
+    public static void main(String[] args) {
+        FordModel vehicle = new FordModel(
+                "1FTFW1E50JFA12345",
+                2018,
+                Models.F150
+        );
+        //System.out.println(vehicle);
+        try {
+            simpleExample(-2);
+        } catch (IllegalArgumentException | OhNo e) {
+            System.out.println("Caught exception: " + e.getMessage());
         }
     }
 }

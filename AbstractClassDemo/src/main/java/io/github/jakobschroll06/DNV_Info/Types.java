@@ -16,6 +16,17 @@ public enum Types {
         return displayName;
     }
 
+    public String toString(int tabLevel) {
+        String tabs = "\t".repeat(tabLevel);
+        StringBuilder sb = new StringBuilder();
+        sb.append(tabs)
+                .append("Vehicle Category: ")
+                .append(displayName)
+                .append("\n");
+        return sb.toString();
+
+    }
+
     @Override
     public String toString() {
         return displayName;
